@@ -15,6 +15,8 @@ namespace SoundBeats.Core.Entities
         public int Id { get; set; }
         public int TrackNumber { get; set; }
         public string Title { get; set; }
+
+        [Column(TypeName = "decimal(10,2)")]
         public decimal Length { get; set; }
         public int AlbumId { get; set; }
         public virtual Album Album { get; set; }
