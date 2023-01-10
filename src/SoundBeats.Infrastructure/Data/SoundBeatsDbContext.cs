@@ -19,5 +19,12 @@ namespace SoundBeats.Infrastructure.Data
         public DbSet<Song> Songs { get; set; }
         public DbSet<ReviewerProfile> ReviewerProfiles { get; set; }
         public DbSet<SongReview> SongReviews { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new SoundBeatsConfiguration());
+        }
+
     }
 }
