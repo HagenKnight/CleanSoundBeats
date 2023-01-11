@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using SoundBeats.Api.Middleware;
 using SoundBeats.Core.Interfaces;
 using SoundBeats.Infrastructure.Data;
 using SoundBeats.Infrastructure.Repositories;
@@ -42,15 +42,7 @@ namespace SoundBeats.Api
             });
 
             /* Inversion of Control container*/
-            services.AddTransient<ICountryRepository, CountryRepository>();
-            services.AddTransient<IArtistRepository, ArtistRepository>();
-            services.AddTransient<IMusicianRepository, MusicianRepository>();
-            services.AddTransient<IGroupMemberRepository, GroupMemberRepository>();
-            services.AddTransient<IAlbumRepository, AlbumRepository>();
-            services.AddTransient<IGenreRepository, GenreRepository>();
-            services.AddTransient<ISongRepository, SongRepository>();
-            services.AddTransient<IReviewerProfileRepository, ReviewerProfile>();
-            services.AddTransient<ISongReviewRepository, SongReviewRepository>();
+            IoC.AddDependency(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

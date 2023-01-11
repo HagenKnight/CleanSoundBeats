@@ -13,13 +13,20 @@ namespace SoundBeats.Infrastructure.Repositories
 
         public async Task<Country> GetCountry(int id)
         {
-            var _country = await _soundBeatsDbContext.Countries.FirstOrDefaultAsync(x => x.Id == id);
-            return _country;
+            var _country = await _soundBeatsDbContext.Countries.IgnoreAutoIncludes().FirstOrDefaultAsync(x => x.Id == id);
+            if (_country != null)
+            {
+                return _country;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task<List<Country>> GetCountries()
         {
-            var _genre = await _soundBeatsDbContext.Countries.ToListAsync();
+            var _genre = await _soundBeatsDbContext.Countries.IgnoreAutoIncludes().ToListAsync();
             return _genre;
         }
     }

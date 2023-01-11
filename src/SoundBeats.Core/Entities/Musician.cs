@@ -14,6 +14,6 @@ namespace SoundBeats.Core.Entities
         public string ImageUrl { get; set; }
         public string ImageType { get; set; }
 
-        public ICollection<GroupMember> GroupMember { get; set; }
+        public ICollection<GroupMember>? GroupMember { get; set; }
     }
 }

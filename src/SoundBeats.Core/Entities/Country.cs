@@ -12,6 +12,6 @@ namespace SoundBeats.Core.Entities
         public string ISO2 { get; set; }
         public string ISO3 { get; set; }
 
-        public ICollection<Artist> Artist { get; set; }
+        public ICollection<Artist>? Artist { get; set; }
     }
 }

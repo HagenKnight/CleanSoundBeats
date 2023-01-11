@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace SoundBeats.Core.Entities
 {
-    [Table("Albums")]
+    [Table("Album")]
     public class Album
     {
         public int Id { get; set; }

@@ -9,7 +9,7 @@ namespace SoundBeats.Infrastructure.Repositories
     {
 
         private readonly SoundBeatsDbContext _soundBeatsDbContext;
-        public GenreRepository(SoundBeatsDbContext soundBeatsDbContext) => _soundBeatsDbContext= soundBeatsDbContext;
+        public GenreRepository(SoundBeatsDbContext soundBeatsDbContext) => _soundBeatsDbContext = soundBeatsDbContext;
 
 
         public async Task<Genre> GetGenre(int id)
@@ -24,18 +24,59 @@ namespace SoundBeats.Infrastructure.Repositories
             return _genre;
         }
 
-        public Task<Genre> AddGenre(Genre genre)
+        public async Task<Genre> AddGenre(Genre genre)
         {
-            throw new NotImplementedException();
+            await _soundBeatsDbContext.Genres.AddAsync(genre);
+            await _soundBeatsDbContext.SaveChangesAsync();
+            return genre;
         }
 
-        public Task<Genre> UpdateGenre(Genre genre)
+        public async Task<Genre> UpdateGenre(Genre genre)
         {
-            throw new NotImplementedException();
+            _soundBeatsDbContext.Entry(genre).State = EntityState.Modified;
+
+            try
+            {
+                _soundBeatsDbContext.Genres.Update(genre);
+                await _soundBeatsDbContext.SaveChangesAsync();
+                return genre;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return null;
+            }
         }
-        public Task<Genre> DeleteGenre(int id)
+
+        public async Task<Genre> DeleteGenre(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var genre = GetGenreById(id);
+                if (genre == null)
+                {
+                    return null;
+                }
+
+                _soundBeatsDbContext.Genres.Remove(genre);
+                await _soundBeatsDbContext.SaveChangesAsync();
+                return genre;
+            }
+            catch (Exception)
+            {
+
+                throw new NotImplementedException();
+            }
+        }
+
+        private bool GenreExists(int id)
+        {
+            return (_soundBeatsDbContext.Genres?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private Genre GetGenreById(int id)
+        {
+            Genre? _genre = _soundBeatsDbContext.Genres.FirstOrDefault(x => x.Id == id);
+            return _genre;
         }
     }
 }
