@@ -2,9 +2,9 @@
 using SoundBeats.Core.Interfaces;
 using SoundBeats.Infrastructure.Repositories;
 
-namespace SoundBeats.Api.Middleware
+namespace SoundBeats.Infrastructure.Extensions.ServiceCollections
 {
-    public static class IoC
+    public static class InversionOfControl
     {
         public static IServiceCollection AddDependency(this IServiceCollection services)
         {

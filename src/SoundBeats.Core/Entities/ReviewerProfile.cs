@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using SoundBeats.Core.Entities.Base;
 
 namespace SoundBeats.Core.Entities
 {
-    [Table("ReviewerProfile")]
-    public class ReviewerProfile
+    public class ReviewerProfile : EntityBase<int>
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        // Navigation Property
         public ICollection<SongReview> SongReviews { get; set; }
     }
 }

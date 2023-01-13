@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using SoundBeats.Core.Entities.Base;
 
 namespace SoundBeats.Core.Entities
 {
-    [Table("Album")]
-    public class Album
+    public class Album : EntityBase<int>
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public int Year { get; set; }
         public string CoverUrl { get; set; }
@@ -21,7 +12,7 @@ namespace SoundBeats.Core.Entities
         public int ArtistId { get; set; }
         public Artist Artist { get; set; }
 
+        // navigation Property 
         public ICollection<Song> Song { get; set; }
-
     }
 }

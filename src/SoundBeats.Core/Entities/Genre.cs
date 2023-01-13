@@ -1,14 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using SoundBeats.Core.Entities.Base;
 
 namespace SoundBeats.Core.Entities
 {
-    [Table("Genre")]
-    public class Genre
+    public class Genre : EntityBase<int>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
 
+        // navigation property
         public ICollection<Song>? Songs { get; set; }
     }
 }

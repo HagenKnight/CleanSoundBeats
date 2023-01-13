@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SoundBeats.Infrastructure.Data
 {
-    public class SoundBeatsConfiguration : IEntityTypeConfiguration<Country>
+    public class CountryConfiguration : IEntityTypeConfiguration<Country>
     {
         public void Configure(EntityTypeBuilder<Country> builder)
         {

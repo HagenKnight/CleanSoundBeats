@@ -14,14 +14,30 @@ namespace SoundBeats.Infrastructure.Repositories
 
         public async Task<Genre> GetGenre(int id)
         {
-            var _genre = await _soundBeatsDbContext.Genres.FirstOrDefaultAsync(x => x.Id == id);
-            return _genre;
+            try
+            {
+                var _genre = await _soundBeatsDbContext.Genres.FirstOrDefaultAsync(x => x.Id == id);
+                return _genre;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<List<Genre>> GetGenres()
         {
-            var _genre = await _soundBeatsDbContext.Genres.ToListAsync();
-            return _genre;
+            try
+            {
+                var _genre = await _soundBeatsDbContext.Genres.ToListAsync();
+                return _genre;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<Genre> AddGenre(Genre genre)

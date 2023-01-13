@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using SoundBeats.Core.Entities;
 
 namespace SoundBeats.Infrastructure.Data
@@ -23,7 +24,16 @@ namespace SoundBeats.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new SoundBeatsConfiguration());
+            modelBuilder.ApplyConfiguration(new CountryConfiguration());
+
+            // Singularize table name
+            foreach (IMutableEntityType entity in modelBuilder.Model.GetEntityTypes())
+            {
+                if (entity.BaseType == null)
+                {
+                    entity.SetTableName(entity.DisplayName());
+                }
+            }
         }
 
     }

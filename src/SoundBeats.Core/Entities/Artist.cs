@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using SoundBeats.Core.Entities.Base;
 
 namespace SoundBeats.Core.Entities
 {
-    [Table("Artist")]
-    public class Artist
+    public class Artist : EntityBase<int>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Biography { get; set; }
 

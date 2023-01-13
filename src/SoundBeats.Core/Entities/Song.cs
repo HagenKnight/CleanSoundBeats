@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SoundBeats.Core.Entities.Base;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace SoundBeats.Core.Entities
 {
-    [Table("Song")]
-    public class Song
+    public class Song : EntityBase<int>
     {
-        public int Id { get; set; }
         public int TrackNumber { get; set; }
         public string Title { get; set; }
 
