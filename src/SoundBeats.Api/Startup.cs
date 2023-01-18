@@ -27,6 +27,8 @@ namespace SoundBeats.Api
             /* connection string to DBContext */
             DatabaseContext.AddDbContexts(services, Configuration);
 
+            DbContextFactory.AddDbFactory(services);
+
             /* Inversion of Control container*/
             InversionOfControl.AddDependency(services);
         }

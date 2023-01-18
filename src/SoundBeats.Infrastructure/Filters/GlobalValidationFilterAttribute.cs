@@ -11,7 +11,7 @@ namespace SoundBeats.Infrastructure.Filters
             if (context.ActionArguments.Any(x => x.Value == null))
                 context.Result = new BadRequestObjectResult("Object is null");
 
-            if (context.ModelState.IsValid)
+            if (!context.ModelState.IsValid)
             {
                 context.Result = new BadRequestObjectResult(context.ModelState);
                 return;

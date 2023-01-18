@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using SoundBeats.Core.DTO;
 using SoundBeats.Core.Entities;
 using SoundBeats.Core.Interfaces;
+using SoundBeats.Core.Interfaces.Services;
+using SoundBeats.Core.Wrappers;
 
 namespace SoundBeats.Api.Controllers
 {
@@ -10,80 +12,62 @@ namespace SoundBeats.Api.Controllers
     [ApiController]
     public class GenresController : ControllerBase
     {
-        private readonly IGenreRepository _genreRepository;
-        private readonly IMapper _mapper;
+        private readonly IGenreService _genreService;
 
-        public GenresController(IMapper mapper, IGenreRepository genreRepository)
+        public GenresController(IGenreService genreService)
         {
-            _mapper = mapper;
-            _genreRepository = genreRepository;
+            //_mapper = mapper;
+            _genreService = genreService;
         }
         // GET: api/Genres
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Genre>>> GetGenres()
         {
-            var _genres = await _genreRepository.GetGenres();
-            var _genresDTO = _mapper.Map<IEnumerable<GenreDTO>>(_genres);
-            if (_genresDTO == null)
-            {
-                return NotFound();
-            }
-            return Ok(_genresDTO);
+            var response = new ApiResponse<IEnumerable<GenreDTO>>(await _genreService.GetGenres());
+            return Ok(response);
         }
 
         // GET: api/Genres/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Genre>> GetGenre(int id)
         {
-            try
-            {
-                var _genre = await _genreRepository.GetGenre(id);
-                var _genreDTO = _mapper.Map<GenreDTO>(_genre);
-                if (_genreDTO == null)
-                {
-                    return NotFound();
-                }
-                return Ok(_genreDTO);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            GenreDTO _articleDTO = await _genreService.FindGenre(id);
+
+            if (_articleDTO == null)
+                return NotFound();
+
+            var response = new ApiResponse<GenreDTO>(_articleDTO);
+            return Ok(response);
 
         }
 
         // PUT: api/Genres/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGenre(int id, Genre genre)
+        public async Task<IActionResult> PutGenre(GenreDTOUpdate obj)
         {
-            var _genre = await _genreRepository.UpdateGenre(genre);
-            return Ok(_genre);
+            obj = await _genreService.UpdateGenre(obj);
+            var response = new ApiResponse<GenreDTOUpdate>(obj);
+            return Ok(response);
         }
 
         // POST: api/Genres
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Genre>> PostGenre(GenreDTO genreDTO)
+        public async Task<ActionResult<Genre>> PostGenre(GenreDTOCreate obj)
         {
-            var _genre = _mapper.Map<Genre>(genreDTO);
-            // insert date
-            _genre.CreationDate = DateTime.Now;
-            await _genreRepository.AddGenre(_genre);
-            return Ok(genreDTO);
+            obj = await _genreService.AddGenre(obj);
+            var response = new ApiResponse<GenreDTOCreate>(obj);
+            return Ok(response);
         }
 
         // DELETE: api/Genres/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGenre(int id)
+        public async Task<IActionResult> DeleteGenre(GenreDTODelete obj)
         {
-            var _genre = await _genreRepository.DeleteGenre(id);
-
-            if (_genre == null)
-            {
-                return NotFound();
-            }
-            return Ok(_genre);
+            obj = await _genreService.DeleteGenre(obj);
+            var response = new ApiResponse<GenreDTODelete>(obj);
+            return Ok(response);
         }
     }
 }

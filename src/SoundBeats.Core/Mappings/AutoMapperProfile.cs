@@ -9,14 +9,14 @@ namespace SoundBeats.Core.Mappings
 
         public AutoMapperProfile()
         {
-            CreateMap<Genre, GenreDTO>();
-            CreateMap<GenreDTO, Genre>();
+            CreateMap<Genre, GenreDTO>().ReverseMap(); ;
+            CreateMap<GenreDTOCreate, Genre>().ReverseMap();
+            CreateMap<GenreDTOUpdate, Genre>().ReverseMap(); ;
+            CreateMap<GenreDTODelete, Genre>().ReverseMap(); ;
 
-            CreateMap<Country, CountryDTO>();
-            CreateMap<CountryDTO, Country>();
+            CreateMap<Country, CountryDTO>().ReverseMap(); ;
 
-            CreateMap<Artist, ArtistDTO>();
-            CreateMap<ArtistDTO, Artist>();
+            CreateMap<Artist, ArtistDTO>().ReverseMap();
         }
     }
 }

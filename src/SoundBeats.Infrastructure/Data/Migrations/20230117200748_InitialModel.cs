@@ -26,7 +26,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -46,7 +46,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -71,7 +71,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -92,7 +92,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -114,7 +114,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -144,7 +144,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -174,7 +174,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -210,7 +210,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -245,7 +245,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     AccountIdCreationDate = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    AccountUpdateDate = table.Column<int>(type: "int", nullable: true),
+                    AccountIdUpdateDate = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccountIdDeleteDate = table.Column<int>(type: "int", nullable: true)
@@ -269,7 +269,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Country",
-                columns: new[] { "Id", "AccountIdCreationDate", "AccountIdDeleteDate", "AccountUpdateDate", "CreationDate", "DeleteDate", "ISO2", "ISO3", "IsDeleted", "NameEn", "NameEs", "UpdateDate" },
+                columns: new[] { "Id", "AccountIdCreationDate", "AccountIdDeleteDate", "AccountIdUpdateDate", "CreationDate", "DeleteDate", "ISO2", "ISO3", "IsDeleted", "NameEn", "NameEs", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, 0, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "AD", "AND", false, " ", "Andorra", null },

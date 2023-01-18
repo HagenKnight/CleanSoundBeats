@@ -9,6 +9,6 @@ namespace SoundBeats.Core.Interfaces.Management
     public interface IUpdateEntity<TKey>
     {
         public DateTime? UpdateDate { get; set; }
-        public int? AccountUpdateDate { get; set; }
+        public int? AccountIdUpdateDate { get; set; }
     }
 }

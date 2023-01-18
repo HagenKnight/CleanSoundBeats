@@ -12,7 +12,7 @@ using SoundBeats.Infrastructure.Data;
 namespace SoundBeats.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(SoundBeatsDbContext))]
-    [Migration("20230113152727_InitialModel")]
+    [Migration("20230117200748_InitialModel")]
     partial class InitialModel
     {
         /// <inheritdoc />
@@ -39,7 +39,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<int>("ArtistId")
@@ -93,7 +93,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<string>("Biography")
@@ -140,7 +140,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreationDate")
@@ -2887,7 +2887,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreationDate")
@@ -2925,7 +2925,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<int>("ArtistId")
@@ -2979,7 +2979,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("BirthDate")
@@ -3036,7 +3036,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreationDate")
@@ -3078,7 +3078,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<int>("AlbumId")
@@ -3132,7 +3132,7 @@ namespace SoundBeats.Infrastructure.Data.Migrations
                     b.Property<int?>("AccountIdDeleteDate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountUpdateDate")
+                    b.Property<int?>("AccountIdUpdateDate")
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
