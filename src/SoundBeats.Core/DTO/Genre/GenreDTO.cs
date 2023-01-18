@@ -1,4 +1,4 @@
-﻿namespace SoundBeats.Core.DTO
+﻿namespace SoundBeats.Core.DTO.Genre
 {
     public class GenreDTO
     {

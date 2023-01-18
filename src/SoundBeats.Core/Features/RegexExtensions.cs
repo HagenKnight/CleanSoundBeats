@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace SoundBeats.Infrastructure.Extensions.Base
+namespace SoundBeats.Core.Features
+
 {
     public static class RegexExtensions
     {

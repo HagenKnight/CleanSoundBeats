@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
-using SoundBeats.Core.DTO;
+using SoundBeats.Core.DTO.Artist;
+using SoundBeats.Core.DTO.Country;
+using SoundBeats.Core.DTO.Genre;
 using SoundBeats.Core.Entities;
 
 namespace SoundBeats.Core.Mappings

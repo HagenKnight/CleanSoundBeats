@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SoundBeats.Core.DTO;
+using SoundBeats.Core.DTO.Genre;
 using SoundBeats.Core.Entities;
 using SoundBeats.Core.Interfaces.Base;
 using SoundBeats.Core.Interfaces.Repository;

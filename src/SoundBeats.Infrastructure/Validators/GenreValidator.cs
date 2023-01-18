@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
-using SoundBeats.Core.DTO;
-
+using SoundBeats.Core.DTO.Genre;
 
 namespace SoundBeats.Infrastructure.Validators
 {

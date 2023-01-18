@@ -1,4 +1,4 @@
-﻿namespace SoundBeats.Core.Exceptions
+﻿namespace SoundBeats.Core.Exceptions.Core.Persistence
 {
     public class EntityNotFoundException : Exception
     {

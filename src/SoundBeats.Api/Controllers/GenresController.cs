@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using SoundBeats.Core.DTO;
+using SoundBeats.Core.DTO.Genre;
 using SoundBeats.Core.Entities;
 using SoundBeats.Core.Interfaces;
 using SoundBeats.Core.Interfaces.Services;

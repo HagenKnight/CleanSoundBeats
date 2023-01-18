@@ -1,4 +1,4 @@
-﻿using SoundBeats.Core.DTO;
+﻿using SoundBeats.Core.DTO.Genre;
 using SoundBeats.Core.Entities;
 using System;
 using System.Collections.Generic;

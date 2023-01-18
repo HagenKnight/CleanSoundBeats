@@ -1,4 +1,4 @@
-﻿namespace SoundBeats.Core.DTO
+﻿namespace SoundBeats.Core.DTO.ReviewerProfile
 {
     public class ReviewerProfileDTO
     {

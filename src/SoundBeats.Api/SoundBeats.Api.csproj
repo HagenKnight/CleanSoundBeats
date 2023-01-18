@@ -32,8 +32,4 @@
     <ProjectReference Include="..\SoundBeats.Infrastructure\SoundBeats.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Middleware\" />
-  </ItemGroup>
-
 </Project>

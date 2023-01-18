@@ -1,4 +1,4 @@
-﻿namespace SoundBeats.Core.Entities
+﻿namespace SoundBeats.Core.DTO.GroupMember
 {
     public class GroupMemberDTO
     {
