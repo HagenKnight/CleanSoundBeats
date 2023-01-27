@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoundBeats.Core.Exceptions.Core.Persistence
+namespace SoundBeats.Core.Exceptions
 {
     public class MappingNotFoundException : Exception
     {

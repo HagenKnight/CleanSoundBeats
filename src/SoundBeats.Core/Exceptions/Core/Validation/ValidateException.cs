@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SoundBeats.Core.Exceptions.Core.Validation
+﻿namespace SoundBeats.Core.Exceptions
 {
     public class ValidateException : Exception
     {
