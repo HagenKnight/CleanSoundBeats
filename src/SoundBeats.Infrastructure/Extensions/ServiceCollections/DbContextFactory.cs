@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SoundBeats.Infrastructure.Data;
-using System;
 
 namespace SoundBeats.Infrastructure.Extensions.ServiceCollections
 {

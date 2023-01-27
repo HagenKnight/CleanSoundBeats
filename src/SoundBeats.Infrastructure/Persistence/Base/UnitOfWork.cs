@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using SoundBeats.Core.Interfaces.Base;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace SoundBeats.Infrastructure.Persistence.Base
 {

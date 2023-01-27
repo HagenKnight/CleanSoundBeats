@@ -1,13 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SoundBeats.Core.Interfaces.Base;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Drawing.Text;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SoundBeats.Infrastructure.Persistence.Repository.Base
 {

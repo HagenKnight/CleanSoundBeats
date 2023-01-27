@@ -1,12 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SoundBeats.Core.Entities;
-using SoundBeats.Core.Interfaces;
+﻿using SoundBeats.Core.Entities;
 using SoundBeats.Core.Interfaces.Base;
 using SoundBeats.Core.Interfaces.Repository;
 using SoundBeats.Infrastructure.Data;
 using SoundBeats.Infrastructure.Persistence.Repository.Base;
 using System.Linq.Expressions;
-using System.Threading;
 
 namespace SoundBeats.Infrastructure.Persistence.Repository
 {

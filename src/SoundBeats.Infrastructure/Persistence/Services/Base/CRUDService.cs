@@ -2,6 +2,7 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SoundBeats.Core.Exceptions;
+using SoundBeats.Core.Exceptions.Core.Persistence;
 using SoundBeats.Core.Interfaces.Base;
 using SoundBeats.Core.Interfaces.Management;
 using SoundBeats.Core.Interfaces.Services.Base;
