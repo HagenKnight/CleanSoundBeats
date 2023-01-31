@@ -1,4 +1,5 @@
 ﻿using SoundBeats.Application.Mappings;
+using SoundBeats.Api.ServiceCollection;
 
 namespace SoundBeats.Api
 {
@@ -13,23 +14,13 @@ namespace SoundBeats.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(Startup).Assembly, typeof(AutoMapperProfile).Assembly);
-
-            //ControllerConfigure.AddControllerExtension(services);
-
-            /* connection string to DBContext */
-          //  DatabaseContext.AddDbContexts(services, Configuration);
-
-          //  DbContextFactory.AddDbFactory(services);
-
-            /* Inversion of Control container*/
-          //  InversionOfControl.AddDependency(services);
+            ConfigureServiceExtension.InitConfigurationAPI(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //DefaultConfiguration.InitConfigurationAPI(app, env);
+            AppBuilderExtension.InitConfigurationAPI(app, env);
         }
 
     }

@@ -4,7 +4,7 @@ using SoundBeats.Infrastructure.Persistence.Data;
 using SoundBeats.Infrastructure.UnitOfWork.Base;
 
 
-namespace SoundBeats.Infrastructure.Persistence.ServiceCollection
+namespace SoundBeats.Infrastructure.UnitOfWork.ServiceCollection
 {
     public static class ServiceExtension
     {

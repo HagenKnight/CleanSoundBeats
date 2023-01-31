@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+﻿using SoundBeats.Api.Middleware;
 
-namespace SoundBeats.Infrastructure.Extensions.ApplicationBuilder
+namespace SoundBeats.Api.ServiceCollection
 {
-    public static class DefaultConfiguration
+    public static class AppBuilderExtension
     {
         public static void InitConfigurationAPI(this IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -18,11 +16,11 @@ namespace SoundBeats.Infrastructure.Extensions.ApplicationBuilder
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
         }
-
     }
 }

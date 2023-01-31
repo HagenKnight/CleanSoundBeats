@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SoundBeats.Core.DTO.Genre;
-using SoundBeats.Core.Entities;
-using SoundBeats.Core.Interfaces.Services;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SoundBeats.Application.Queries;
+using SoundBeats.Core.DTO;
 using SoundBeats.Core.Wrappers;
 
 namespace SoundBeats.Api.Controllers
@@ -10,21 +10,42 @@ namespace SoundBeats.Api.Controllers
     [ApiController]
     public class GenresController : ControllerBase
     {
-        private readonly IGenreService _genreService;
+        private readonly IMediator _mediator;
 
-        public GenresController(IGenreService genreService)
-        {
-            //_mapper = mapper;
-            _genreService = genreService;
-        }
+        public GenresController(IMediator mediator) => _mediator = mediator;
+
         // GET: api/Genres
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Genre>>> GetGenres()
-        {
-            var response = new ApiResponse<IEnumerable<GenreDTO>>(await _genreService.GetGenres());
-            return Ok(response);
-        }
+        public async Task<IEnumerable<GenreDTO>> GetGenres() =>
+            await _mediator.Send(new GetAllGenreQuery());
 
+
+        // GET: api/Genres/5
+        [HttpGet("{id}")]
+        public async Task<GenreDTO> GetGenre(int id) =>
+            await _mediator.Send(new GetGenreQuery(id));
+
+
+        // POST: api/Genres
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ApiResponse<GenreDTOCreate>> Post(GenreDTOCreate command) =>
+            await _mediator.Send(command);
+
+
+        // PUT: api/Genres/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<ApiResponse<GenreDTOUpdate>> Put(GenreDTOUpdate command) =>
+            await _mediator.Send(command);
+
+        // DELETE: api/Genres/5
+        [HttpDelete("{id}")]
+        public async Task<ApiResponse<GenreDTODelete>> Delete(GenreDTODelete command) =>
+            await _mediator.Send(command);
+
+
+        /*
         // GET: api/Genres/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Genre>> GetGenre(int id)
@@ -66,6 +87,6 @@ namespace SoundBeats.Api.Controllers
             obj = await _genreService.DeleteGenre(obj);
             var response = new ApiResponse<GenreDTODelete>(obj);
             return Ok(response);
-        }
+        }*/
     }
 }

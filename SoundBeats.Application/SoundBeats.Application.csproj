@@ -1,21 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.4.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="11.4.0" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+        <PackageReference Include="MediatR" Version="11.1.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\SoundBeats.Core\SoundBeats.Core.csproj" />
-  </ItemGroup>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ServiceCollection\" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\src\SoundBeats.Core\SoundBeats.Core.csproj" />
+    </ItemGroup>
 
 </Project>
