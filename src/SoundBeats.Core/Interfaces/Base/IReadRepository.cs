@@ -7,6 +7,7 @@ namespace SoundBeats.Core.Interfaces.Base
     {
         Task<IEnumerable<T>> AllAsync(CancellationToken cancellationToken = default);
         Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+        Task<T> FilterSingleAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
         Task<IEnumerable<T>> FilterAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
     }
 }

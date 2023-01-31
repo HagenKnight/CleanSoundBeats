@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-using SoundBeats.Core.Mappings;
-using SoundBeats.Infrastructure.Extensions.ServiceCollections;
-using SoundBeats.Infrastructure.Extensions.ApplicationBuilder;
+﻿using SoundBeats.Api.Mappings;
 
 namespace SoundBeats.Api
 {
@@ -22,21 +15,21 @@ namespace SoundBeats.Api
         {
             services.AddAutoMapper(typeof(Startup).Assembly, typeof(AutoMapperProfile).Assembly);
 
-            ControllerConfigure.AddControllerExtension(services);
+            //ControllerConfigure.AddControllerExtension(services);
 
             /* connection string to DBContext */
-            DatabaseContext.AddDbContexts(services, Configuration);
+          //  DatabaseContext.AddDbContexts(services, Configuration);
 
-            DbContextFactory.AddDbFactory(services);
+          //  DbContextFactory.AddDbFactory(services);
 
             /* Inversion of Control container*/
-            InversionOfControl.AddDependency(services);
+          //  InversionOfControl.AddDependency(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            DefaultConfiguration.InitConfigurationAPI(app, env);
+            //DefaultConfiguration.InitConfigurationAPI(app, env);
         }
 
     }

@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SoundBeats.Infrastructure.Persistence\SoundBeats.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\SoundBeats.Core\SoundBeats.Core.csproj" />
   </ItemGroup>
 
@@ -32,8 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-    <Folder Include="Extensions\Base\" />
+    <Folder Include="Persistence\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,6 +1,10 @@
-﻿namespace SoundBeats.Core.DTO.Genre
+﻿using MediatR;
+using SoundBeats.Core.DTO.Base;
+using SoundBeats.Core.Wrappers;
+
+namespace SoundBeats.Core.DTO.Genre
 {
-    public class GenreDTOUpdate
+    public class GenreDTOUpdate : CommandDTO, IRequest<ApiResponse<GenreDTOUpdate>>
     {
         public int Id { get; set; }
         public string Name { get; set; }
