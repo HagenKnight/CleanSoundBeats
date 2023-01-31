@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundBeats.Infrastructure.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundBeats.Infrastructure.Common", "SoundBeats.Infrastructure.Common\SoundBeats.Infrastructure.Common.csproj", "{B9197944-8D27-4661-A01A-6AE21014D8AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundBeats.Application", "SoundBeats.Application\SoundBeats.Application.csproj", "{1659CC6D-96A0-4498-AFD0-799720207860}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{B9197944-8D27-4661-A01A-6AE21014D8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9197944-8D27-4661-A01A-6AE21014D8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9197944-8D27-4661-A01A-6AE21014D8AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1659CC6D-96A0-4498-AFD0-799720207860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1659CC6D-96A0-4498-AFD0-799720207860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1659CC6D-96A0-4498-AFD0-799720207860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1659CC6D-96A0-4498-AFD0-799720207860}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{E576BCD7-F5CE-4F9C-BB65-208A5A2DE300} = {E0D0600A-D6BA-487E-96D2-B910E7C7A527}
 		{3A138CDA-6046-4BFB-894B-93CDE68E5412} = {E0D0600A-D6BA-487E-96D2-B910E7C7A527}
 		{B9197944-8D27-4661-A01A-6AE21014D8AF} = {E0D0600A-D6BA-487E-96D2-B910E7C7A527}
+		{1659CC6D-96A0-4498-AFD0-799720207860} = {6FA4770C-60FD-4CD0-B670-51C75FE3DE97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3C6696C-60A5-44B6-B6EF-F19CB4C97AFF}

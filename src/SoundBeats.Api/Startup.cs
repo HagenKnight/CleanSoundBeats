@@ -1,4 +1,4 @@
-﻿using SoundBeats.Api.Mappings;
+﻿using SoundBeats.Application.Mappings;
 
 namespace SoundBeats.Api
 {

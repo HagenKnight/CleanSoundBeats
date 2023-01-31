@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
-using SoundBeats.Core.DTO.Genre;
+using SoundBeats.Core.DTO;
 
-namespace SoundBeats.API.Validators
+namespace SoundBeats.Application.Validators
 {
     public class GenreValidator : AbstractValidator<GenreDTO>
     {

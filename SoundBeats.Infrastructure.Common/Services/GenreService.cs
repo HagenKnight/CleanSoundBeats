@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SoundBeats.Core.DTO.Base;
-using SoundBeats.Core.DTO.Genre;
+using SoundBeats.Core.DTO;
 using SoundBeats.Core.Entities;
 using SoundBeats.Core.Exceptions;
 using SoundBeats.Core.Interfaces.Base;

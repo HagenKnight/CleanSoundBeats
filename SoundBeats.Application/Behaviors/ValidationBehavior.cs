@@ -2,7 +2,7 @@
 using MediatR;
 using SoundBeats.Core.Exceptions;
 
-namespace SoundBeats.Api.Behaviors
+namespace SoundBeats.Application.Behaviors
 {
     public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
        where TRequest : IRequest<TResponse>

@@ -2,7 +2,7 @@
 using SoundBeats.Core.DTO.Base;
 using SoundBeats.Core.Wrappers;
 
-namespace SoundBeats.Core.DTO.Genre
+namespace SoundBeats.Core.DTO
 {
     public class GenreDTOCreate : CommandDTO, IRequest<ApiResponse <GenreDTOCreate>>
     {

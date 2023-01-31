@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using SoundBeats.Core.DTO.Artist;
 using SoundBeats.Core.DTO.Country;
-using SoundBeats.Core.DTO.Genre;
+using SoundBeats.Core.DTO;
 using SoundBeats.Core.Entities;
 
-namespace SoundBeats.Api.Mappings
+namespace SoundBeats.Application.Mappings
 {
     public class AutoMapperProfile : Profile
     {
@@ -13,8 +13,11 @@ namespace SoundBeats.Api.Mappings
         {
             CreateMap<Genre, GenreDTO>().ReverseMap(); ;
             CreateMap<GenreDTOCreate, Genre>().ReverseMap();
+            CreateMap<GenreDTOCreate, GenreDTO>().ReverseMap();
             CreateMap<GenreDTOUpdate, Genre>().ReverseMap(); ;
+            CreateMap<GenreDTOUpdate, GenreDTO>().ReverseMap(); ;
             CreateMap<GenreDTODelete, Genre>().ReverseMap(); ;
+            CreateMap<GenreDTODelete, GenreDTO>().ReverseMap(); ;
 
             CreateMap<Country, CountryDTO>().ReverseMap(); ;
 

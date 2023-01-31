@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SoundBeats.Application\SoundBeats.Application.csproj" />
     <ProjectReference Include="..\..\SoundBeats.Infrastructure.Common\SoundBeats.Infrastructure.Common.csproj" />
     <ProjectReference Include="..\..\SoundBeats.Infrastructure.Persistence\SoundBeats.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\..\SoundBeats.Infrastructure.UnitOfWork\SoundBeats.Infrastructure.UnitOfWork.csproj" />
