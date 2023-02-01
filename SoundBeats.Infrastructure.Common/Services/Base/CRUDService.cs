@@ -60,8 +60,13 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
         {
             TEntity getEntity = await _repository.GetByIdAsync(id, cancellationToken);
 
-            if (!getEntity.IsDeleted)
-                return _mapper.Map<TQueryDTO>(getEntity);
+            if (getEntity != null)
+            {
+                if (!getEntity.IsDeleted)
+                    return _mapper.Map<TQueryDTO>(getEntity);
+                else
+                    throw new EntityNotFoundException(typeof(TEntity), id);
+            }
             else
                 throw new EntityNotFoundException(typeof(TEntity), id);
         }

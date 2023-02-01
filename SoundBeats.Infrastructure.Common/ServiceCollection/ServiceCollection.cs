@@ -2,6 +2,7 @@
 using SoundBeats.Core.Interfaces.Repository;
 using SoundBeats.Core.Interfaces.Services;
 using SoundBeats.Infrastructure.Common.Repositories;
+using SoundBeats.Infrastructure.Common.Services;
 using SoundBeats.Infrastructure.Persistence.Data;
 using SoundBeats.Infrastructure.Persistence.Services;
 using System;
@@ -18,9 +19,11 @@ namespace SoundBeats.Infrastructure.Common.ServiceCollection
         {
             /* Repositories */
             services.AddTransient<IGenreRepository<SoundBeatsDbContext>, GenreRepository>();
+            services.AddTransient<ICountryRepository<SoundBeatsDbContext>, CountryRepository>();
 
             /* Services */
             services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<ICountryService, CountryService>();
 
             /* Helpers */
         }

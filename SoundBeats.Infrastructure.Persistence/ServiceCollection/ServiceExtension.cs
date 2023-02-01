@@ -9,9 +9,8 @@ namespace SoundBeats.Infrastructure.Persistence.ServiceCollection
     {
         public static void AddPersistenceLayer(this IServiceCollection services, IConfiguration configuration)
         {
-            string? connectionString = configuration.GetConnectionString("SoundBeatsConnection");
-
             /* Contextos de Bases de Datos. */
+            string? connectionString = configuration.GetConnectionString("SoundBeatsConnection");
             services.AddDbContext<SoundBeatsDbContext>(options => { options.UseSqlServer(connectionString); });
 
             /* DbFactory pattern. */
