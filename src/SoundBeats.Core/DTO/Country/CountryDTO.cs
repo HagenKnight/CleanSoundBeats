@@ -1,4 +1,4 @@
-﻿namespace SoundBeats.Core.DTO.Country
+﻿namespace SoundBeats.Core.DTO
 {
     public class CountryDTO
     {

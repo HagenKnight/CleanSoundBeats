@@ -9,8 +9,10 @@ namespace SoundBeats.Infrastructure.Persistence.ServiceCollection
     {
         public static void AddPersistenceLayer(this IServiceCollection services, IConfiguration configuration)
         {
+            string? connectionString = configuration.GetConnectionString("SoundBeatsConnection");
+
             /* Contextos de Bases de Datos. */
-            services.AddDbContext<SoundBeatsDbContext>(options => { options.UseSqlServer(configuration.GetConnectionString("SoundBeatsDbContext")); });
+            services.AddDbContext<SoundBeatsDbContext>(options => { options.UseSqlServer(connectionString); });
 
             /* DbFactory pattern. */
             /* Agregar aquí las implementaciones de Factory Pattern, asociadas a cada conexto de Base de Datos... */

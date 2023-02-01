@@ -21,8 +21,9 @@ namespace SoundBeats.Infrastructure.Persistence.Data
             .Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<SoundBeatsDbContext>();
+            string connectionString = configuration.GetConnectionString("SoundBeatsConnection");
 
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("SoundBeatsConnection"));
+            optionsBuilder.UseSqlServer(connectionString);
 
             return new SoundBeatsDbContext(optionsBuilder.Options);
         }

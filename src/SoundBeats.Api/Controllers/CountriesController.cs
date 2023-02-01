@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SoundBeats.Application.Queries;
+using SoundBeats.Core.DTO;
 using SoundBeats.Core.Entities;
 using SoundBeats.Core.Interfaces;
 
@@ -8,25 +11,25 @@ namespace SoundBeats.Api.Controllers
     [ApiController]
     public class CountriesController : ControllerBase
     {
-        private readonly ICountryRepository _countryRepository;
-
-        public CountriesController(ICountryRepository countryRepository) => _countryRepository = countryRepository;
+        private readonly IMediator _mediator;
+        public CountriesController(IMediator mediator) => _mediator = mediator;
 
         // GET: api/Countries
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
+        //[HttpGet]
+        /*public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
         {
             var _countries = await _countryRepository.GetCountries();
             return Ok(_countries);
-        }
+        }*/
+
+        /*public async Task<IEnumerable<CountryDTO>> GetCountries() =>
+           await _mediator.Send(new GetAllCountryQuery());
 
         // GET: api/Countries/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Country>> GetCountry(int id)
-        {
-            var _countries = await _countryRepository.GetCountry(id);
-            return Ok(_countries);
-        }
+        public async Task<CountryDTO> GetCountry(int id) =>
+            await _mediator.Send(new GetCountryQuery(id));*/
+
 
         //// PUT: api/Countries/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

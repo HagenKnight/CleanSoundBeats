@@ -44,49 +44,5 @@ namespace SoundBeats.Api.Controllers
         public async Task<ApiResponse<GenreDTODelete>> Delete(GenreDTODelete command) =>
             await _mediator.Send(command);
 
-
-        /*
-        // GET: api/Genres/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Genre>> GetGenre(int id)
-        {
-            GenreDTO _articleDTO = await _genreService.FindGenre(id);
-
-            if (_articleDTO == null)
-                return NotFound();
-
-            var response = new ApiResponse<GenreDTO>(_articleDTO);
-            return Ok(response);
-
-        }
-
-        // PUT: api/Genres/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutGenre(GenreDTOUpdate obj)
-        {
-            obj = await _genreService.UpdateGenre(obj);
-            var response = new ApiResponse<GenreDTOUpdate>(obj);
-            return Ok(response);
-        }
-
-        // POST: api/Genres
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Genre>> PostGenre(GenreDTOCreate obj)
-        {
-            obj = await _genreService.AddGenre(obj);
-            var response = new ApiResponse<GenreDTOCreate>(obj);
-            return Ok(response);
-        }
-
-        // DELETE: api/Genres/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGenre(GenreDTODelete obj)
-        {
-            obj = await _genreService.DeleteGenre(obj);
-            var response = new ApiResponse<GenreDTODelete>(obj);
-            return Ok(response);
-        }*/
     }
 }
