@@ -3,7 +3,7 @@ using SoundBeats.Core.DTO;
 
 namespace SoundBeats.Application.Validators
 {
-    public class GenreValidatorCreate : AbstractValidator<GenreDTOCreate>
+    public class GenreValidatorCreate : AbstractValidator<CreateGenreDTO>
     {
         public GenreValidatorCreate()
         {

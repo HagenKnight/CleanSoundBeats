@@ -29,7 +29,7 @@ namespace SoundBeats.Api.Controllers
         // POST: api/Genres
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ApiResponse<GenreDTOCreate>> Post(GenreDTOCreate command) =>
+        public async Task<ApiResponse<CreateGenreDTO>> Post(CreateGenreDTO command) =>
             await _mediator.Send(command);
 
 
@@ -41,7 +41,7 @@ namespace SoundBeats.Api.Controllers
 
         // DELETE: api/Genres/5
         [HttpDelete("{id}")]
-        public async Task<ApiResponse<GenreDTODelete>> Delete(GenreDTODelete command) =>
+        public async Task<ApiResponse<DeleteGenreDTO>> Delete(DeleteGenreDTO command) =>
             await _mediator.Send(command);
 
     }

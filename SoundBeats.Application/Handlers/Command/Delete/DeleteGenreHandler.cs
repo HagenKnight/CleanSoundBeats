@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace SoundBeats.Application.Handlers.Command
 {
-    public class DeleteGenreHandler : IRequestHandler<GenreDTODelete, ApiResponse<GenreDTODelete>>
+    public class DeleteGenreHandler : IRequestHandler<DeleteGenreDTO, ApiResponse<DeleteGenreDTO>>
     {
         private readonly IGenreService _genreService;
 
         public DeleteGenreHandler(IGenreService genreService) =>
             _genreService = genreService;
 
-        public async Task<ApiResponse<GenreDTODelete>> Handle(GenreDTODelete request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<DeleteGenreDTO>> Handle(DeleteGenreDTO request, CancellationToken cancellationToken)
         {
             var entity = await _genreService.DeleteGenre(request, request.AutoSave, cancellationToken);
-            return new ApiResponse<GenreDTODelete>(entity, $"The Genre with ID {entity.Id} was deleted successfully.");
+            return new ApiResponse<DeleteGenreDTO>(entity, $"The Genre with ID {entity.Id} was deleted successfully.");
         }
     }
 }

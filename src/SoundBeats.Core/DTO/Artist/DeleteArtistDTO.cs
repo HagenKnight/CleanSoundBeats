@@ -4,10 +4,10 @@ using SoundBeats.Core.Wrappers;
 
 namespace SoundBeats.Core.DTO
 {
-    public class GenreDTODelete : CommandDTO, IRequest<ApiResponse<GenreDTODelete>>
+    public class DeleteArtistDTO : CommandDTO, IRequest<ApiResponse<DeleteArtistDTO>>
     {
         public int Id { get; set; }
-        public int? AccountIdDeleteDate { get; set; }
+        public DateTime DeleteDate { get; set; }
         public bool AutoSave { get; set; }
     }
 }

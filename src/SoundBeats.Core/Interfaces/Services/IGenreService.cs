@@ -9,8 +9,8 @@ namespace SoundBeats.Core.Interfaces.Services
         Task<GenreDTO> FindGenre(int id, CancellationToken cancellationToken = default);
 
         //Task<GenreDTO> FilterGenre(Expression<Func<Genre, bool>> predicate, CancellationToken cancellationToken = default);
-        Task<GenreDTOCreate> AddGenre(GenreDTOCreate objDTO, CancellationToken cancellationToken = default);
+        Task<CreateGenreDTO> AddGenre(CreateGenreDTO objDTO, CancellationToken cancellationToken = default);
         Task<GenreDTOUpdate> UpdateGenre(GenreDTOUpdate objDTO, CancellationToken cancellationToken = default);
-        Task<GenreDTODelete> DeleteGenre(GenreDTODelete objDTO, bool autoSave = true, CancellationToken cancellationToken = default);
+        Task<DeleteGenreDTO> DeleteGenre(DeleteGenreDTO objDTO, bool autoSave = true, CancellationToken cancellationToken = default);
     }
 }

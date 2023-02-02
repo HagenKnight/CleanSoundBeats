@@ -20,10 +20,12 @@ namespace SoundBeats.Infrastructure.Common.ServiceCollection
             /* Repositories */
             services.AddTransient<IGenreRepository<SoundBeatsDbContext>, GenreRepository>();
             services.AddTransient<ICountryRepository<SoundBeatsDbContext>, CountryRepository>();
+            services.AddTransient<IArtistRepository<SoundBeatsDbContext>, ArtistRepository>();
 
             /* Services */
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<ICountryService, CountryService>();
+            services.AddTransient<IArtistService, ArtistService>();
 
             /* Helpers */
         }

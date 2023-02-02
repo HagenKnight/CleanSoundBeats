@@ -5,17 +5,17 @@ using SoundBeats.Core.Wrappers;
 
 namespace SoundBeats.Application.Handlers.Command
 {
-    public class CreateGenreHandler : IRequestHandler<GenreDTOCreate, ApiResponse <GenreDTOCreate>>
+    public class CreateGenreHandler : IRequestHandler<CreateGenreDTO, ApiResponse<CreateGenreDTO>>
     {
         private readonly IGenreService _genreService;
 
         public CreateGenreHandler(IGenreService genreService) =>
             _genreService = genreService;
 
-        public async Task<ApiResponse<GenreDTOCreate>> Handle(GenreDTOCreate request, CancellationToken cancellationToken) 
+        public async Task<ApiResponse<CreateGenreDTO>> Handle(CreateGenreDTO request, CancellationToken cancellationToken)
         {
             var entity = await _genreService.AddGenre(request, cancellationToken);
-            return new ApiResponse<GenreDTOCreate>(entity, $"The Genre with name {entity.Name} was created successfully.");
+            return new ApiResponse<CreateGenreDTO>(entity, $"The Genre with name {entity.Name} was created successfully.");
         }
     }
 }
