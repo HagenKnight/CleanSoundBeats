@@ -30,11 +30,7 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
             _repository = Guard.Against.Null(repository, nameof(repository));
             _mapper = Guard.Against.Null(mapper, nameof(mapper));
         }
-        public async Task<IEnumerable<TQueryDTO>> FilterAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
-        {
-            IEnumerable<TEntity> list = await _repository.FilterAsync(predicate, cancellationToken);
-            return _mapper.Map<IEnumerable<TQueryDTO>>(list);
-        }
+
         public async Task<TQueryDTO> FindAsync(int id, CancellationToken cancellationToken = default)
         {
             TEntity getEntity = await _repository.GetByIdAsync(id, cancellationToken);
@@ -44,11 +40,7 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
             else
                 throw new EntityNotFoundException(typeof(TEntity), id);
         }
-        public async Task<IEnumerable<TQueryDTO>> GetAllAsync(CancellationToken cancellationToken = default)
-        {
-            IEnumerable<TEntity> list = await _repository.AllAsync(cancellationToken);
-            return _mapper.Map<IEnumerable<TQueryDTO>>(list);
-        }
+
         public async Task<TQueryDTO> GetSingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
         {
             TEntity getEntity = await _repository.FilterSingleAsync(predicate, cancellationToken);
@@ -59,20 +51,39 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
                 throw new EntityNotFoundException(typeof(TEntity));
         }
 
-        public Task<IEnumerable<TQueryDTO>> FilterAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
+        public async Task<IEnumerable<TQueryDTO>> FilterAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
         {
-            throw new NotImplementedException();
+            IEnumerable<TEntity> list = await _repository.FilterAsync(predicate, cancellationToken, orderBy);
+
+            /* Limit query fields. */
+            if (!string.IsNullOrWhiteSpace(fields))
+                list = list.AsQueryable().Select<TEntity>($"new({fields})");
+
+            return Mapper.Map<IEnumerable<TQueryDTO>>(list);
         }
 
-        public Task<IEnumerable<TQueryDTO>> GetAllAsync(CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
+        public async Task<IEnumerable<TQueryDTO>> GetAllAsync(CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
         {
-            throw new NotImplementedException();
+            IEnumerable<TEntity> list = await _repository.AllAsync(cancellationToken, orderBy);
+
+            /* Limit query fields. */
+            if (!string.IsNullOrWhiteSpace(fields))
+                list = list.AsQueryable().Select<TEntity>($"new({fields})");
+
+            return Mapper.Map<IEnumerable<TQueryDTO>>(list);
         }
 
-        public Task<IEnumerable<TQueryDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
+        public async Task<IEnumerable<TQueryDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
         {
-            throw new NotImplementedException();
+            IEnumerable<TEntity> list = await _repository.AllAsync(predicate, cancellationToken, orderBy);
+
+            /* Limit query fields. */
+            if (!string.IsNullOrWhiteSpace(fields))
+                list = list.AsQueryable().Select<TEntity>($"new({fields})");
+
+            return Mapper.Map<IEnumerable<TQueryDTO>>(list);
         }
+
 
         //public async Task<IEnumerable<TQueryDTO>> GetPagedAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         //{

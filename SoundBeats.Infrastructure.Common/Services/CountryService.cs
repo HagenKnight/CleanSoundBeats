@@ -25,7 +25,7 @@ namespace SoundBeats.Infrastructure.Common.Services
         }
 
         public async Task<IEnumerable<CountryDTO>> GetCountries(CancellationToken cancellationToken = default) =>
-            await GetAll(cancellationToken);
+            await GetAllAsync(cancellationToken);
 
 
         public async Task<CountryDTO> FindCountry(int id, CancellationToken cancellationToken = default) =>

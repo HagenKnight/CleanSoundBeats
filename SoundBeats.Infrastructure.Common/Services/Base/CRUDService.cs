@@ -5,6 +5,7 @@ using SoundBeats.Core.Exceptions;
 using SoundBeats.Core.Interfaces.Base;
 using SoundBeats.Core.Interfaces.Management;
 using SoundBeats.Core.Interfaces.Services.Base;
+using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 
 namespace SoundBeats.Infrastructure.Persistence.Services.Base
@@ -31,31 +32,6 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
         }
 
 
-        public async Task<IEnumerable<TQueryDTO>> GetAll(CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                IEnumerable<TEntity> list = await _repository.AllAsync(cancellationToken);
-                return _mapper.Map<IEnumerable<TQueryDTO>>(list);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-
-        public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
-        {
-            TEntity getEntity = await _repository.FilterSingleAsync(predicate, cancellationToken);
-
-            if (getEntity != null)
-                return getEntity;
-            else
-                throw new EntityNotFoundException(typeof(TEntity));
-        }
-
         public async Task<TQueryDTO> FindAsync(int id, CancellationToken cancellationToken = default)
         {
             TEntity getEntity = await _repository.GetByIdAsync(id, cancellationToken);
@@ -71,11 +47,51 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
                 throw new EntityNotFoundException(typeof(TEntity), id);
         }
 
+        public async Task<TQueryDTO> GetSingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
+        {
+            TEntity getEntity = await _repository.FilterSingleAsync(predicate, cancellationToken);
+
+            if (getEntity != null)
+                return _mapper.Map<TQueryDTO>(getEntity);
+            else
+                throw new EntityNotFoundException(typeof(TEntity));
+        }
+
         public async Task<IEnumerable<TQueryDTO>> FilterAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
         {
-            IEnumerable<TEntity> list = await _repository.FilterAsync(predicate, cancellationToken);
+            IEnumerable<TEntity> list = await _repository.FilterAsync(predicate, cancellationToken, orderBy);
+
+            /* Limit query fields. */
+            if (!string.IsNullOrWhiteSpace(fields))
+                list = list.AsQueryable().Select<TEntity>($"new({fields})");
+
             return _mapper.Map<IEnumerable<TQueryDTO>>(list);
         }
+
+
+        public async Task<IEnumerable<TQueryDTO>> GetAllAsync(CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
+        {
+            IEnumerable<TEntity> list = await _repository.AllAsync(cancellationToken, orderBy);
+
+            /* Limit query fields. */
+            if (!string.IsNullOrWhiteSpace(fields))
+                list = list.AsQueryable().Select<TEntity>($"new({fields})");
+
+            return _mapper.Map<IEnumerable<TQueryDTO>>(list);
+        }
+
+        public async Task<IEnumerable<TQueryDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
+        {
+            IEnumerable<TEntity> list = await _repository.AllAsync(predicate, cancellationToken, orderBy);
+
+            /* Limit query fields. */
+            if (!string.IsNullOrWhiteSpace(fields))
+                list = list.AsQueryable().Select<TEntity>($"new({fields})");
+
+            return Mapper.Map<IEnumerable<TQueryDTO>>(list);
+        }
+
+        #region C.U.D operations
 
         public async Task<TQueryDTO> InsertAsync(TCommandDTO objDTO, CancellationToken cancellationToken = default)
         {
@@ -116,7 +132,6 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
             }
         }
 
-
         public async Task<TQueryDTO> DeleteAsync(TCommandDTO objDTO, bool autoSave = true, CancellationToken cancellationToken = default)
         {
             TEntity deletedEntity = await _repository.GetByIdAsync(Convert.ToInt32(Mapper.Map<TEntity>(objDTO).Id), cancellationToken);
@@ -136,20 +151,7 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
             return Mapper.Map<TQueryDTO>(deletedEntity);
         }
 
-        Task<TQueryDTO> IReadService<TQueryDTO, TKey, TEntity, TRepoAll, TContext>.GetSingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-
-        public Task<IEnumerable<TQueryDTO>> GetAllAsync(CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<TQueryDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

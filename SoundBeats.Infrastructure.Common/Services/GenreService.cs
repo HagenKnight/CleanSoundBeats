@@ -24,7 +24,7 @@ namespace SoundBeats.Infrastructure.Persistence.Services
         }
 
         public async Task<IEnumerable<GenreDTO>> GetGenres(CancellationToken cancellationToken = default) =>
-            await GetAll(cancellationToken);
+            await GetAllAsync(cancellationToken);
 
 
         public async Task<GenreDTO> FindGenre(int id, CancellationToken cancellationToken = default) =>
