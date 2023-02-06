@@ -39,7 +39,7 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
             if (getEntity != null)
             {
                 if (!getEntity.IsDeleted)
-                    return _mapper.Map<TQueryDTO>(getEntity);
+                    return Mapper.Map<TQueryDTO>(getEntity);
                 else
                     throw new EntityNotFoundException(typeof(TEntity), id);
             }
@@ -52,7 +52,7 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
             TEntity getEntity = await _repository.FilterSingleAsync(predicate, cancellationToken);
 
             if (getEntity != null)
-                return _mapper.Map<TQueryDTO>(getEntity);
+                return Mapper.Map<TQueryDTO>(getEntity);
             else
                 throw new EntityNotFoundException(typeof(TEntity));
         }
@@ -65,7 +65,7 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
             if (!string.IsNullOrWhiteSpace(fields))
                 list = list.AsQueryable().Select<TEntity>($"new({fields})");
 
-            return _mapper.Map<IEnumerable<TQueryDTO>>(list);
+            return Mapper.Map<IEnumerable<TQueryDTO>>(list);
         }
 
 
@@ -77,7 +77,7 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
             if (!string.IsNullOrWhiteSpace(fields))
                 list = list.AsQueryable().Select<TEntity>($"new({fields})");
 
-            return _mapper.Map<IEnumerable<TQueryDTO>>(list);
+            return Mapper.Map<IEnumerable<TQueryDTO>>(list);
         }
 
         public async Task<IEnumerable<TQueryDTO>> GetAllAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
