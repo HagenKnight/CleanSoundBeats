@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using Newtonsoft.Json.Serialization;
 using SoundBeats.Api.Middleware;
 using SoundBeats.Application.ServiceCollection;
 using SoundBeats.Infrastructure.Common.ServiceCollection;
@@ -30,7 +31,7 @@ namespace SoundBeats.Api.ServiceCollection
             });
 
             /* Puede ser también: services.AddHttpContextAccessor(); */
-            //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();

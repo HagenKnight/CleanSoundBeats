@@ -21,5 +21,9 @@ namespace SoundBeats.Infrastructure.Common.Repositories
         public async Task<IEnumerable<Country>> FilterCountry(Expression<Func<Country, bool>> predicate, CancellationToken cancellationToken = default) =>
             await FilterAsync(predicate, cancellationToken);
 
+        public Task<IEnumerable<Country>> GetPagedCountries(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

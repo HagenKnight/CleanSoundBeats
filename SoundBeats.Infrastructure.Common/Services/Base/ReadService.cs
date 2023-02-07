@@ -16,9 +16,13 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
       where TRepoRead : IReadRepository<TEntity, TContext>
       where TContext : DbContext, new()
     {
+        internal int _iCount;
         internal readonly IMapper _mapper;
         internal readonly TRepoRead _repository;
         internal readonly IUnitOfWork<TContext> _unitOfWork;
+
+        public int RowCount => _iCount;
+
 
         protected IMapper Mapper => _mapper;
         protected TRepoRead Repository => _repository;
@@ -85,15 +89,48 @@ namespace SoundBeats.Infrastructure.Persistence.Services.Base
         }
 
 
-        //public async Task<IEnumerable<TQueryDTO>> GetPagedAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default)
-        //{
-        //    IEnumerable<TEntity> list = await _repository.GetPagedAsync(pageNumber, pageSize, cancellationToken);
-        //    return _mapper.Map<IEnumerable<TQueryDTO>>(list);
-        //}
-        //public async Task<IEnumerable<TQueryDTO>> GetPagedAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
-        //{
-        //    IEnumerable<TEntity> list = await _repository.GetPagedAsync(pageNumber, pageSize, predicate, cancellationToken);
-        //    return _mapper.Map<IEnumerable<TQueryDTO>>(list);
-        //}
+        public async Task<IEnumerable<TQueryDTO>> GetPagedAsync(int pageNumber, int pageSize, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
+        {
+            _iCount = _repository.GetCount();
+
+            if (pageNumber < 1 || (pageNumber > ((int)Math.Ceiling(_iCount / (double)pageSize))))
+                throw new PageRowIndexNotFound(pageNumber);
+
+            if (pageSize < 10)
+                throw new PageRowMinimumException(pageSize);
+
+            if (pageSize > 50)
+                throw new PageRowMaximumException(pageSize);
+
+            IEnumerable<TEntity> list = await _repository.GetPagedAsync(pageNumber, pageSize, cancellationToken, orderBy);
+
+            /* Limit query fields. */
+            if (!string.IsNullOrWhiteSpace(fields))
+                list = list.AsQueryable().Select<TEntity>($"new({fields})");
+
+            return Mapper.Map<IEnumerable<TQueryDTO>>(list);
+        }
+
+        public async Task<IEnumerable<TQueryDTO>> GetPagedAsync(int pageNumber, int pageSize, Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default, string fields = null, string orderBy = null)
+        {
+            _iCount = _repository.GetCount(predicate);
+
+            if (pageNumber < 1 || (pageNumber > ((int)Math.Ceiling(_iCount / (double)pageSize))))
+                throw new PageRowIndexNotFound(pageNumber);
+
+            if (pageSize < 10)
+                throw new PageRowMinimumException(pageSize);
+
+            if (pageSize > 50)
+                throw new PageRowMaximumException(pageSize);
+
+            IEnumerable<TEntity> list = await _repository.GetPagedAsync(pageNumber, pageSize, predicate, cancellationToken, orderBy);
+
+            /* Limit query fields. */
+            if (!string.IsNullOrWhiteSpace(fields))
+                list = list.AsQueryable().Select<TEntity>($"new({fields})");
+
+            return Mapper.Map<IEnumerable<TQueryDTO>>(list);
+        }
     }
 }

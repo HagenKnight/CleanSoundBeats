@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using SoundBeats.Application.Queries;
+using SoundBeats.Core.Custom;
 using SoundBeats.Core.DTO;
 using SoundBeats.Core.Entities;
 
@@ -9,6 +11,13 @@ namespace SoundBeats.Application.Mappings
 
         public AutoMapperProfile()
         {
+            /* Mapping PagedList objects. */
+            CreateMap(typeof(PagedList<>), typeof(MetaData<>)).ConvertUsing(typeof(ConverterPaging<,>));
+
+            /* Mapping queries and parameters. */
+            CreateMap<GetAllCountryQuery, GetAllCountryParameter>().ReverseMap();
+
+
             CreateMap<Genre, GenreDTO>().ReverseMap(); ;
             CreateMap<CreateGenreDTO, Genre>().ReverseMap();
             CreateMap<CreateGenreDTO, GenreDTO>().ReverseMap();

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SoundBeats.Core.Entities;
-using SoundBeats.Core.Interfaces;
+using SoundBeats.Core.Interfaces.Repository;
 using SoundBeats.Infrastructure.Persistence.Data;
 
 namespace SoundBeats.Infrastructure.Common.Repositories
